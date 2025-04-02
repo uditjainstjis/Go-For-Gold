@@ -1,19 +1,20 @@
 import React from 'react';
 import { Award, Calendar, MapPin, Users, BookOpen, Trophy, ChevronRight, GraduationCap, Code2, Instagram, Youtube, Mail, Twitter, X } from 'lucide-react';
+import Navbar from '../components/Navbar';
 
 function App() {
   return (
     <div className="min-h-screen bg-white">
+      <Navbar/>
       {/* Hero Section */}
       <div 
-        className="relative h-[600px] bg-cover bg-center" 
+        className="relative pt-16 bg-cover bg-center h-screen" 
         style={{
           backgroundImage: 'url("/youth.png")',
-          backgroundBlendMode: 'overlay',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)'
+          backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent">
+        <div className="absolute inset-0 bg-black/60">
           <div className="container mx-auto px-6 h-full flex items-center">
             <div className="max-w-2xl text-white">
               <h1 className="text-5xl font-bold mb-6">IOI Bootcamp Camp</h1>
@@ -129,8 +130,6 @@ function App() {
         </div>
       </div>
 
-
-
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-6">
@@ -146,7 +145,7 @@ function App() {
               <img src='/newton3.png' className='h-8 ml-1 lg:ml-0 sm:ml-3'></img>
             <br></br>
             <p className="text-gray-400">
-              Go for Gold: Uniting India’s Top Coders to Conquer the ICPC Stage!
+              Go for Gold: Uniting India's Top Coders to Conquer the ICPC Stage!
             </p>
           </div>
             <div>
