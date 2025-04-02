@@ -38,8 +38,7 @@ export default function HeroCarousel() {
       image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
       buttonText: "Explore",
       buttonColor: "bg-yellow-500 hover:bg-yellow-600",
-      path: "/goforgold",
-      duration: "Oct 2025"
+      path: "/goforgold"
     }
   ];
 
@@ -119,9 +118,9 @@ export default function HeroCarousel() {
               alt={currentSlideData.title}
               className="rounded-2xl shadow-2xl h-[400px] w-full object-cover"
             />
-            {(currentSlide === 1 || currentSlide === 2) && currentSlideData.duration && (
+            {currentSlide === 1 && currentSlideData.duration && (
               <div className="absolute -bottom-8 -right-8 bg-white p-6 lg:block hidden rounded-xl shadow-lg">
-                <p className={`text-2xl font-bold ${currentSlide === 1 ? "text-blue-500" : "text-yellow-500"}`}>
+                <p className="text-2xl font-bold text-blue-500">
                   {currentSlideData.duration}
                 </p>
                 <p className="text-gray-600">2025</p>
