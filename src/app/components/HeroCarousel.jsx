@@ -1,164 +1,260 @@
-'use client'
-import React, { useState, useEffect } from 'react';
+'use client';
+
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import Image from 'next/image';
+
+const slides = [
+  {
+    id: 0,
+    title: 'Go For Gold',
+    subtitle: 'Powered By NST',
+    description: "Unlocking India's Competitive Programming Potential",
+    bgClass: 'bg-gradient-to-br from-yellow-50 via-yellow-100 to-white',
+    image: '/gfg-hero.png',
+    buttonText: 'Join Discord',
+    buttonLink: 'https://discord.gg/WpTxuYXm7d',
+    buttonColor: 'bg-blue-500 hover:bg-blue-600',
+  },
+  {
+    id: 1,
+    title: 'IOI Bootcamp',
+    subtitle: 'School Student Program',
+    description: "Cultivating India's Future Olympiad Champions",
+    bgClass: 'bg-gradient-to-br from-blue-50 via-blue-100 to-white',
+    image: '/image.png',
+    buttonText: 'Learn More',
+    buttonLink: '/ioi',
+    buttonColor: 'bg-blue-500 hover:bg-blue-600',
+  },
+  {
+    id: 2,
+    title: 'GFG Camp',
+    subtitle: 'College Student Program',
+    description: "Building India's competitive programming elite",
+    bgClass: 'bg-gradient-to-br from-yellow-50 via-yellow-100 to-white',
+    image: '/gfg-carou.avif',
+    buttonText: 'Explore',
+    buttonLink: '/goforgold',
+    buttonColor: 'bg-yellow-500 hover:bg-yellow-600',
+  },
+];
 
 export default function HeroCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
-  const slides = [
-    {
-      id: 0,
-      title: "Go For Gold",
-      subtitle: "Powered By NST",
-      description: "Unlocking India's Competitive Programming Potential",
-      bgClass: "bg-gradient-to-br from-yellow-50 via-yellow-100 to-white",
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
-      secondButtonText: "Discord",
-      secondButtonLink: "https://discord.gg/WpTxuYXm7d"
-    },
-    {
-      id: 1,
-      title: "IOI Bootcamp",
-      subtitle: "School Student Program",
-      description: "Cultivating India's Future Olympiad Champions",
-      bgClass: "bg-gradient-to-br from-blue-50 via-blue-100 to-white",
-      image: "/youth.png",
-      buttonText: "Learn More",
-      buttonColor: "bg-blue-500 hover:bg-blue-600",
-      path: "/ioi",
-      duration: "May 24-June 5th"
-    },
-    {
-      id: 2,
-      title: "GFG Camp",
-      subtitle: "College Student Program",
-      description: "Building India's competitive programming elite",
-      bgClass: "bg-gradient-to-br from-yellow-50 via-yellow-100 to-white",
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
-      buttonText: "Explore",
-      buttonColor: "bg-yellow-500 hover:bg-yellow-600",
-      path: "/goforgold"
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const slideInterval = 5000;
+  const intervalRef = useRef(null);
+  const progressIntervalRef = useRef(null);
+  const lastProgressRef = useRef(0);
+
+  const resetTimers = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      clearTimeout(intervalRef.current);
+      intervalRef.current = null;
     }
-  ];
+    if (progressIntervalRef.current) {
+      clearInterval(progressIntervalRef.current);
+      progressIntervalRef.current = null;
+    }
+  };
 
-  // Auto-rotate slides every 10 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 10000);
+  const startProgressBar = (initialValue = 0) => {
+    setProgress(initialValue);
+    const remainingTime = slideInterval * (1 - initialValue / 100);
     
-    return () => clearInterval(interval);
-  }, []);
+    progressIntervalRef.current = setInterval(() => {
+      setProgress((prev) => {
+        const newProgress = prev + (100 / (remainingTime / 50)); // Update every 50ms
+        lastProgressRef.current = newProgress > 100 ? 100 : newProgress;
+        return lastProgressRef.current;
+      });
+    }, 50);
+  };
 
-  // Manual navigation functions
+  const startSlideTimer = (initialProgress = 0) => {
+    // Calculate remaining time for current slide
+    const remainingTime = slideInterval * (1 - initialProgress / 100);
+    
+    intervalRef.current = setTimeout(() => {
+      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+      setProgress(0);
+      lastProgressRef.current = 0; // Reset stored progress when slide changes automatically
+      
+      // Setup new timers for next slides
+      resetTimers();
+      if (isPlaying) {
+        startProgressBar(0);
+        
+        // Start a regular interval for subsequent slides
+        intervalRef.current = setInterval(() => {
+          setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+          setProgress(0);
+          lastProgressRef.current = 0; // Reset stored progress
+          
+          // Reset and restart timers for the next slide
+          resetTimers();
+          if (isPlaying) {
+            startProgressBar(0);
+            startSlideTimer(0);
+          }
+        }, slideInterval);
+      }
+    }, remainingTime);
+  };
+
+  // Effect to manage the timers when play/pause state changes
+  useEffect(() => {
+    resetTimers(); // Clear any existing timers first
+    
+    if (isPlaying) {
+      startProgressBar(lastProgressRef.current);
+      startSlideTimer(lastProgressRef.current);
+    } else {
+      // When paused, store the current progress
+      lastProgressRef.current = progress;
+    }
+    
+    return () => resetTimers();
+  }, [isPlaying]);
+
+  // Effect to reset and restart timers when slide changes manually
+  useEffect(() => {
+    // This effect will handle cleanup and restart only for manual slide changes
+    // It won't run on the initial render because we don't want to interrupt the normal flow
+    return () => {
+      // This only needs cleanup, as the manual navigation will set up new timers
+    };
+  }, [currentSlide]);
+
   const goToSlide = (index) => {
     setCurrentSlide(index);
+    setProgress(0);
+    lastProgressRef.current = 0; // Reset stored progress on manual navigation
+    resetTimers();
+    
+    if (isPlaying) {
+      startProgressBar(0);
+      startSlideTimer(0);
+    }
   };
 
-  const goToNextSlide = () => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying);
   };
-
-  const goToPrevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
-
-  const currentSlideData = slides[currentSlide];
 
   return (
-    <div id="home" className={`pt-16 ${currentSlideData.bgClass} min-h-screen flex items-center transition-colors duration-700`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative">
-        {/* Slide content */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-6xl font-bold text-gray-900 mb-6 flex flex-row gap-4">
-              {currentSlideData.title} {currentSlide === 0 && <span className="text-yellow-500">Program</span>}
-            </h1>
-            <h4 className='ml-2 text-zinc-900/50 text-xl mt-[-17px] mb-4'>{currentSlideData.subtitle}</h4>
-            <h3 className='text-3xl mb-3 font-medium'>{currentSlideData.description}</h3>
-
-            <p className="text-lg text-gray-600 mb-8">
-              {currentSlide === 0 ? (
-                <>
-                  India has some of the brightest minds in the world, yet our country is still
-                  striving to reach the top in competitive programming at the ICPC (International
-                  Collegiate Programming Contest).
-                  <span className='text-lg text-gray-600 mb-8'>
-                    This program aims to build a competitive ecosystem of top programmers from college and industry.
-                  </span>
-                </>
-              ) : currentSlide === 1 ? (
-                "The IOI Bootcamp Camp is an initiative to expand competitive programming training to talented school students across India, increasing the pool of IOI-ready students."
-              ) : (
-                "Join our collegiate training program designed to foster a culture of competitive programming excellence among college students, preparing Indian teams for ICPC."
-              )}
-            </p>
-            
-            <div className="flex flex-wrap gap-4">
-              {currentSlide === 0 ? (
-                <button onClick={() => window.open(currentSlideData.secondButtonLink, '_blank')} className="group bg-blue-500 text-white px-8 py-4 border border-blue-700 rounded-full text-lg font-semibold hover:bg-blue-600 transition flex items-center">
-                  {currentSlideData.secondButtonText}
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-              ) : (
-                <Link href={currentSlideData.path} passHref>
-                  <button className={`group ${currentSlideData.buttonColor || "bg-yellow-500 hover:bg-yellow-600"} text-white px-8 py-4 rounded-full text-lg font-semibold transition flex items-center`}>
-                    {currentSlideData.buttonText}
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+    <div className={`relative w-full min-h-screen h-full overflow-hidden ${slides[currentSlide].bgClass} transition-colors duration-700`}>
+      {/* Animated Background Elements - decorative */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-0 md:left-20 w-40 md:w-96 h-40 md:h-96 rounded-full bg-yellow-400 blur-3xl"></div>
+        <div className="absolute bottom-20 md:bottom-40 right-0 md:right-20 w-40 md:w-96 h-40 md:h-96 rounded-full bg-blue-400 blur-3xl"></div>
+      </div>
+      
+      {/* Slides Container with Animation */}
+      <div className="relative w-full min-h-screen flex items-center">
+        {slides.map((slide, index) => (
+          <div 
+            key={slide.id}
+            className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 py-16 ${
+              currentSlide === index ? 'opacity-100 z-10' : 'opacity-0 -z-10'
+            }`}
+          >
+            {/* Slide Content */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 text-center md:text-left flex flex-col md:flex-row items-center md:justify-between gap-8 md:gap-12 w-full">
+              <div className="w-full md:w-1/2 lg:w-5/12 space-y-4 md:space-y-6 lg:space-y-8 transform transition-transform duration-700 mb-8 md:mb-0">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-tight">
+                  {slide.title} <span className="text-yellow-500">Program</span>
+                </h1>
+                <h3 className="text-lg md:text-xl lg:text-2xl text-gray-700">{slide.subtitle}</h3>
+                <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto md:mx-0">{slide.description}</p>
+                <Link href={slide.buttonLink} passHref>
+                  <button 
+                    className={`px-5 sm:px-6 py-3 sm:py-4 text-white text-lg font-semibold rounded-full flex items-center gap-2 transition transform hover:scale-105 shadow-lg ${slide.buttonColor} mx-auto md:mx-0`}
+                  >
+                    {slide.buttonText} <ArrowRight className="h-5 w-5 md:h-6 md:w-6" />
                   </button>
                 </Link>
-              )}
+              </div>
+              <div className="w-full md:w-1/2 lg:w-6/12 flex justify-center md:justify-end transform transition-transform duration-700">
+                <div className="relative w-full max-w-sm md:max-w-md lg:max-w-xl xl:max-w-2xl">
+                  <div className="absolute -inset-3 sm:-inset-4 md:-inset-6 bg-gradient-to-r from-yellow-400 to-blue-500 rounded-xl sm:rounded-2xl blur-md opacity-30"></div>
+                  <Image
+                    src={slide.image}
+                    alt={slide.title}
+                    width={1000}
+                    height={600}
+                    className="rounded-xl sm:rounded-2xl shadow-xl object-cover relative z-10 transform transition-transform hover:scale-102 w-full h-auto"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-          
-          <div className="relative">
-            <img
-              src={currentSlideData.image}
-              alt={currentSlideData.title}
-              className="rounded-2xl shadow-2xl h-[400px] w-full object-cover"
-            />
-            {currentSlide === 1 && currentSlideData.duration && (
-              <div className="absolute -bottom-8 -right-8 bg-white p-6 lg:block hidden rounded-xl shadow-lg">
-                <p className="text-2xl font-bold text-blue-500">
-                  {currentSlideData.duration}
-                </p>
-                <p className="text-gray-600">2025</p>
-              </div>
-            )}
-          </div>
+        ))}
+      </div>
+
+      {/* Navigation Buttons - Responsive with larger desktop size */}
+      <button
+        onClick={() => {
+          goToSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1);
+        }}
+        className="absolute left-2 sm:left-4 md:left-6 lg:left-10 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 sm:p-3 md:p-4 rounded-full shadow-md hover:bg-white transition backdrop-blur-sm z-20"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8 text-gray-700" />
+      </button>
+      <button
+        onClick={() => {
+          goToSlide(currentSlide === slides.length - 1 ? 0 : currentSlide + 1);
+        }}
+        className="absolute right-2 sm:right-4 md:right-6 lg:right-10 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 sm:p-3 md:p-4 rounded-full shadow-md hover:bg-white transition backdrop-blur-sm z-20"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6 md:h-8 md:w-8 text-gray-700" />
+      </button>
+
+      {/* Play/Pause Button - Larger on desktop */}
+      <button
+        onClick={togglePlayPause}
+        className="absolute left-1/2 transform -translate-x-1/2 bottom-16 sm:bottom-20 md:bottom-24 bg-white/80 p-1.5 sm:p-2 md:p-3 rounded-full shadow-md hover:bg-white transition backdrop-blur-sm z-20"
+        aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
+      >
+        {isPlaying ? (
+          <Pause className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-gray-700" />
+        ) : (
+          <Play className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-gray-700" />
+        )}
+      </button>
+
+      {/* Progress Bar and Navigation Dots - Larger on desktop */}
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-3 sm:gap-4 w-48 sm:w-64 md:w-80 z-20">
+        {/* Progress Bar */}
+        <div className="w-full bg-gray-200 rounded-full h-1 sm:h-1.5 md:h-2 overflow-hidden shadow-inner">
+          <div 
+            className="bg-yellow-500 h-full transition-all duration-300 ease-linear shadow"
+            style={{ width: `${progress}%` }}
+          />
         </div>
         
-        {/* Navigation dots */}
-        <div className="flex justify-center mt-8">
-          {slides.map((slide, index) => (
+        {/* Navigation Dots */}
+        <div className="flex gap-2 sm:gap-3 md:gap-4">
+          {slides.map((_, index) => (
             <button
-              key={slide.id}
+              key={index}
               onClick={() => goToSlide(index)}
-              className={`mx-2 w-3 h-3 rounded-full ${
-                currentSlide === index ? "bg-yellow-500" : "bg-gray-300"
+              className={`w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full transition transform ${
+                currentSlide === index 
+                  ? 'bg-yellow-500 scale-125' 
+                  : 'bg-gray-300 hover:bg-gray-400'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
-        
-        {/* Arrow navigation */}
-        <button
-          onClick={goToPrevSlide}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-lg hover:bg-white transition hidden lg:block"
-          aria-label="Previous slide"
-        >
-          <ArrowRight className="h-6 w-6 rotate-180" />
-        </button>
-        <button
-          onClick={goToNextSlide}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-lg hover:bg-white transition hidden lg:block"
-          aria-label="Next slide"
-        >
-          <ArrowRight className="h-6 w-6" />
-        </button>
       </div>
     </div>
   );
-} 
+}
