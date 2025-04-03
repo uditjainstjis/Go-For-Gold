@@ -19,7 +19,7 @@ export default function Coaches() {
     {
       name: "Aryan Choudhary",
       role: "2x ICPC World Finalist\nGrand Master on CodeForces",
-      image: 'aryan.png',
+      image: 'aryan.jpeg',
 
       //company: "Ex-Amazon",
     },
