@@ -13,7 +13,7 @@ export default function Footer() {
               <span className="ml-2 text-xl font-bold">Go For Gold</span>
               </div>
 
-              <img src='newton4.png' className='h-8 ml-1 lg:ml-0 sm:ml-3'></img>
+              <img src='trans-newton.png' className='h-8 ml-1 lg:ml-0 sm:ml-3'></img>
             </div>
             <p className="text-gray-400">
               Go for Gold: Uniting India’s Top Coders to Conquer the ICPC Stage!
