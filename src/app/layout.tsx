@@ -28,6 +28,8 @@ export default function RootLayout({
       <head>
         {/* Favicon */}
         <link rel="icon" href="/logo-real.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/logo-real.ico" />
+
         <link rel="manifest" href="/site.webmanifest" />
 
         {/* Google Analytics */}
