@@ -234,6 +234,116 @@ function App() {
     </div>
   </div>
 </div>
+{/* Bootcamp Schedule Section */}
+<div className="py-20 bg-white">
+  <div className="container mx-auto px-6">
+    <h2 className="text-3xl font-bold text-center mb-16">Bootcamp Schedule</h2>
+    
+    {/* Large Date Box */}
+    <div className="max-w-4xl mx-auto mb-16 bg-[#FFD700]/5 p-8 rounded-xl border-2 border-[#FFD700] text-center">
+      <h3 className="text-2xl font-semibold mb-4">Program Dates</h3>
+      <p className="text-4xl font-bold text-[#ffd500]">May 25th – June 6th, 2025</p>
+      <p className="mt-4 text-gray-700">Registration deadline: April 27th, 2025</p>
+    </div>
+    
+    {/* Schedule Timeline */}
+    <div className="max-w-4xl mx-auto mb-16">
+      <div className="space-y-4">
+        {[
+          { date: "25th May", activity: "Registration and Induction" },
+          { date: "26th - 30th May", activity: "Learning Phase 1" },
+          { date: "31st May", activity: "Leisure Day" },
+          { date: "1st to 5th June", activity: "Learning Phase 2" },
+          { date: "6th June", activity: "Finale Contest and Prize Distribution" }
+        ].map((item, index) => (
+          <div key={index} className="bg-white rounded-lg flex overflow-hidden shadow-md border border-[#FFD700]/30">
+            <div className="w-full sm:w-2/5 bg-[#FFD700]/10 p-5 flex items-center justify-center text-center font-semibold">
+              {item.date}
+            </div>
+            <div className="w-full sm:w-3/5 p-5 flex items-center justify-center text-center">
+              {item.activity}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    {/* Division Information */}
+    <div className="grid md:grid-cols-2 gap-8">
+      {/* Division 1 */}
+      <div className="bg-white rounded-lg p-8 shadow-lg border-2 border-[#FFD700]/30 hover:border-[#FFD700] transition duration-300">
+        <h3 className="text-2xl font-bold mb-2">Division 1</h3>
+        <p className="text-lg mb-2 text-[#ffc800] font-semibold">Advanced Programmers</p>
+        <p className="mb-4 text-gray-700">
+          Recommended rating range: <span className="font-semibold">1800 - 2200+ on CF</span>
+        </p>
+        <ul className="space-y-3 pl-5">
+          {[
+            "2 hr Expert Sessions x 8",
+            "5 hr Thematic Contests x 6",
+            "1.5 hr Contest Discussions",
+            "1 hr Peer Learning Sessions"
+          ].map((item, index) => (
+            <li key={index} className="flex items-start">
+              <span className="text-[#FFD700] mr-2">•</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      {/* Division 2 */}
+      <div className="bg-white rounded-lg p-8 shadow-lg border-2 border-[#FFD700]/30 hover:border-[#FFD700] transition duration-300">
+        <h3 className="text-2xl font-bold mb-2">Division 2</h3>
+        <p className="text-lg mb-2 text-[#ffc800] font-semibold">Intermediate Programmers</p>
+        <p className="mb-4 text-gray-700">
+          Recommended rating range: <span className="font-semibold">1400 - 1800+ on CF</span>
+        </p>
+        <ul className="space-y-3 pl-5">
+          {[
+            "2 hr Expert Sessions x 12",
+            "5 hr Thematic Contests x 4",
+            "1.5 hr Contest Discussions",
+            "1 hr Peer Learning Sessions"
+          ].map((item, index) => (
+            <li key={index} className="flex items-start">
+              <span className="text-[#FFD700] mr-2">•</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    
+    {/* Additional Information */}
+    <div className="mt-12 bg-[#FFF8DC] p-8 rounded-lg shadow-md border border-[#FFD700]/20">
+      <h3 className="text-xl font-semibold mb-4">What to Expect</h3>
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="bg-white p-4 rounded-md shadow-sm">
+          <p className="font-semibold text-[#FFD700] mb-2">Expert Sessions</p>
+          <p className="text-gray-700">Learn directly from IOI Medalists and ICPC World Finalists through interactive sessions</p>
+        </div>
+        <div className="bg-white p-4 rounded-md shadow-sm">
+          <p className="font-semibold text-[#FFD700] mb-2">Thematic Contests</p>
+          <p className="text-gray-700">Practice with specialized problem sets focused on specific algorithmic topics</p>
+        </div>
+        <div className="bg-white p-4 rounded-md shadow-sm">
+          <p className="font-semibold text-[#FFD700] mb-2">Contest Discussions</p>
+          <p className="text-gray-700">Detailed walkthrough of solutions and problem-solving approaches</p>
+        </div>
+        <div className="bg-white p-4 rounded-md shadow-sm">
+          <p className="font-semibold text-[#FFD700] mb-2">Peer Learning</p>
+          <p className="text-gray-700">Collaborative problem solving and knowledge sharing with fellow participants</p>
+        </div>
+      </div>
+      <div className="mt-6 p-4 bg-white rounded-md border-l-4 border-[#FFD700]">
+        <p className="text-sm">
+          <span className="font-bold">Note:</span> Participants will be assigned to divisions based on their current competitive programming rating and performance in qualification rounds. Both divisions receive the same high-quality instruction tailored to their skill level.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
 {/* faqs */}
 
