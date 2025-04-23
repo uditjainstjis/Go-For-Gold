@@ -1,8 +1,46 @@
-import React from 'react';
-import { Award, Calendar, MapPin, Users, BookOpen, Trophy, ChevronRight, GraduationCap, Code2, Instagram, Youtube, Mail, Twitter, X } from 'lucide-react';
+'use client'
+import React,{useState} from 'react';
+import { Award, Calendar, MapPin, Users, BookOpen, Ticket, Trophy, ChevronRight, GraduationCap, Code2, Instagram, Youtube, Mail, Twitter, X, Plus, Minus } from 'lucide-react';
 import Navbar from '../components/Navbar';
 
+
 function App() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+const faqs = [
+  {
+    question: "What is GoForGold?",
+    answer: "GoForGold is an initiative to improve India's Competitive Programming ecosystem by uniting and supporting the CP community. We aim to produce more high-rated coders and secure gold medals in international contests like ICPC and IOI."
+  },
+  {
+    question: "What is IOI?",
+    answer: "The GoForGold IOI Bootcamp is an intensive program to prepare India’s brightest students for the International Olympiad in Informatics (IOI). It offers early, advanced CP training that also supports ICPC readiness, aiming to grow India’s pool of IOI-ready talent and help young coders excel globally."
+  },
+  {
+    question: "Who are the trainers?",
+    answer: "Our programs are led by ICPC World Finalists, including founders Deepak Gour and Ashwin Krishnamoorthy. All trainers are highly-rated competitive programmers with significant contest experience."
+  },
+  {
+    question: "Is GoForGold connected to ICPC and IOI?",
+    answer: "GoForGold works alongside official ICPC and IOI programs as a complementary initiative. Newton School of Technology has partnered with ICPC regionals, and we're working toward formal associations with both organizations."
+  },
+  {
+    question: "Is there Accommodation Provided?",
+    answer: "Yes, accommodation is arranged for all participants attending the IOI Camp and is covered. Further details will be shared with accepted applicants."
+  },
+  {
+    question: "How to reach the campus?",
+    answer: "The campus is accessible by several transportation options. The nearest train station is Sonipat railway station, which is well-connected to other major cities. If you're travelling by metro, the closest station is Jahangirpuri Metro Station in Delhi. From either location, local transportation options are available to reach the campus. Detailed directions and assistance will be provided to accepted participants for a smooth arrival."
+  },
+  {
+    question: "How can I apply to the IOI Camp?",
+    answer: "To apply, simply fill out the application form at the apply button at the top of the page."
+  },
+  {
+    question: "How can I get in touch with you?",
+    answer: "If you have any questions or need assistance, you can reach out to us via email at goforgold@newtonschool.co or through our contact form on the website. We aim to respond to all inquiries as promptly as possible."
+  }
+];
   return (
     <div className="min-h-screen bg-white">
       <Navbar/>
@@ -20,44 +58,85 @@ function App() {
               <h1 className="text-5xl font-bold mb-6">IOI Bootcamp Camp</h1>
               <p className="text-2xl mb-8">Cultivating India's Future Olympiad Champions</p>
               <p className="text-lg mb-8 opacity-90">
-                The IOI Bootcamp Camp is an initiative to expand competitive programming training to talented school students across India, increasing the pool of IOI-ready students from 40 to more than 100.
+              The GoForGold IOI Bootcamp is an intensive program to prepare India’s brightest students for the International Olympiad in Informatics (IOI). It offers early, advanced CP training that also supports ICPC readiness, aiming to grow India’s pool of IOI-ready talent and help young coders excel globally.
               </p>
               <div className="flex gap-4">
-                <button className="px-8 py-3 bg-[#FFD700] text-black font-semibold rounded-lg hover:bg-[#F4C430] transition hover:cursor-pointer">
-                  Apply Now
-                </button>
-                <button className="px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition hover:cursor-pointer">
-                  Learn More
-                </button>
+              <button
+                onClick={() => {
+                  window.open(
+                    'https://docs.google.com/forms/d/1-v5UACY4I_jraxX4qDMEGV9VTinodJ61d6A3NzIcd_E/viewform?edit_requested=true',
+                    '_blank'
+                  );
+                }}
+                className="px-8 py-3 bg-[#FFD700] text-black font-semibold rounded-lg hover:bg-[#F4C430] transition hover:cursor-pointer"
+              >
+                Apply Now
+              </button>
+
+              <button 
+  onClick={() => {
+    const faqSection = document.getElementById("faq");
+    if (faqSection) {
+      faqSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }} 
+  className="px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition hover:cursor-pointer"
+>
+  Learn More
+</button>
+
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div className="bg-[#FFF8DC] py-16">
+  <div className="container mx-auto px-6 text-center">
+    <h2 className="text-3xl font-bold mb-4">Registration Deadline</h2>
+    <p className="text-lg text-gray-800">
+      Don’t miss out! Registrations close on{" "}
+      <span className="text-[#ffb300] font-semibold">27th April,2025</span>.
+    </p>
+  </div>
+</div>
 
       {/* Camp Details */}
-      <div className="py-20 bg-gradient-to-b from-[#FFF8DC] to-white">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-lg border border-[#FFD700]/20">
-              <Calendar className="w-10 h-10 text-[#FFD700] mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Dates</h3>
-              <p>May 24 - June 7, 2025</p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg border border-[#FFD700]/20">
-              <MapPin className="w-10 h-10 text-[#FFD700] mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Location</h3>
-              <p>Newton School of Technology, Bengaluru/Delhi Campus</p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg border border-[#FFD700]/20">
-              <Users className="w-10 h-10 text-[#FFD700] mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Eligibility</h3>
-              <p>Students in grades 7-12 with strong algorithmic problem-solving potential</p>
-            </div>
+  <div className="py-20 bg-gradient-to-b from-[#FFF8DC] to-white">
+      <div className="container mx-auto px-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="bg-white p-8 rounded-xl shadow-lg border border-[#FFD700]/20">
+            <Calendar className="w-10 h-10 text-[#FFD700] mb-4" />
+            <h3 className="text-xl font-semibold mb-2">Dates</h3>
+            <p>May 25th – June 6th, 2025</p>
+          </div>
+
+          <div className="bg-white p-8 rounded-xl shadow-lg border border-[#FFD700]/20">
+            <MapPin className="w-10 h-10 text-[#FFD700] mb-4" />
+            <h3 className="text-xl font-semibold mb-2">Location</h3>
+            <p>Newton School of Technology, Bengaluru/Delhi Campus</p>
+          </div>
+
+          <div className="bg-white p-8 rounded-xl shadow-lg border border-[#FFD700]/20">
+            <Ticket className="w-10 h-10 text-[#FFD700] mb-4" />
+            <h3 className="text-xl font-semibold mb-2">Registration Fee</h3>
+            <p className="font-bold">₹ 1000</p>
+            <p className="text-sm mt-2">
+              Includes all sessions, meals,<br/>
+              accommodation & mentoring materials
+            </p>
+            <p className="text-xs italic mt-2">*Please note, travel costs are not included.</p>
+          </div>
+
+          <div className="bg-white p-8 rounded-xl shadow-lg border border-[#FFD700]/20">
+            <Users className="w-10 h-10 text-[#FFD700] mb-4" />
+            <h3 className="text-xl font-semibold mb-2">Eligibility</h3>
+            <p>Currently a student in Grade 6 - 12<br/>
+            Basic understanding of competitive programming<br/>
+            Algorithmic problem-solving potential</p>
           </div>
         </div>
       </div>
-
+    </div>
       {/* Training Structure */}
       <div className="py-20 bg-white">
         <div className="container mx-auto px-6">
@@ -97,38 +176,97 @@ function App() {
         </div>
       </div>
 
+
       {/* Expert Trainers */}
-      <div className="py-20 bg-[#FFF8DC]">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-16">Expert Trainers</h2>
-          <div className="grid sm:grid-cols-2  gap-8">
-            {[
-              {
-                name: "Deepak Gour",
-                title: "ICPC World Finalist",
-                image: "/deepak-gour.jpeg"
-              },
-              {
-                name: "Ashwin Krishnamoorthy",
-                title: "ICPC World Finalist",
-                image: "/ashwin-krish.jpeg"
-              },
-            ].map((trainer, index) => (
-              <div key={index} className="bg-white max-w-[400px] md:ml-24 rounded-xl shadow-lg overflow-hidden p-6 text-center">
-                <div className="w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden border-4 border-[#FFD700]">
-                  <img 
-                    src={trainer.image} 
-                    alt={trainer.name} 
-                    className="w-full h-full object-cover"
-                  />
+      <div className="py-12 sm:py-20 bg-[#FFF8DC]">
+  <div className="container mx-auto px-4 sm:px-6">
+    <h2 className="text-3xl font-bold text-center mb-12 sm:mb-16">Expert Trainers</h2>
+
+    {/* Horizontal scroll on mobile, flex-wrap + center on larger screens */}
+    <div className="flex flex-nowrap sm:flex-wrap justify-start sm:justify-center gap-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory scroll-smooth">
+      {[
+        {
+          name: "Deepak Gour",
+          title: "ICPC World Finalist",
+          image: "/Deepak@2x.png"
+        },
+        {
+          name: "Ashwin Krishnamoorthy",
+          title: "ICPC World Finalist",
+          image: "/Ashwin@2x.png"
+        },
+        {
+          name: "Vivek Gupta",
+          title: "ICPC World Finalist, Master on CodeForces, 7 Star on CodeChef",
+          image: "/Vivek@2x.png"
+        },
+        {
+          name: "Arjun Arul",
+          title: "IOI Medalist, Trainer for Indian IOI Teams",
+          image: "/Arjun@2x.png"
+        },
+        {
+          name: "Jaskaran Singh",
+          title: "ICPC World Finalist, Master on CodeForces",
+          image: "/Jaskaran@2x.png"
+        },
+        {
+          name: "Himanshu Singh",
+          title: "ICPC World Finalist, Grandmaster",
+          image: "/Himanshu@2x.png"
+        },
+        {
+          name: "Utkarsh Gupta",
+          title: "2x ICPC World Finalist, Grandmaster",
+          image: "/Utkarsh@2x.png"
+        },
+      ].map((trainer, index) => (
+        <div
+          key={index}
+          className="bg-white shadow-md rounded-lg p-6 w-[260px] sm:w-[300px] text-center snap-start shrink-0 sm:shrink"
+        >
+          <img
+            src={trainer.image}
+            alt={trainer.name}
+            className="w-24 h-24 mx-auto rounded-full object-cover mb-4"
+          />
+          <h3 className="text-xl font-semibold mb-2">{trainer.name}</h3>
+          <p className="text-sm text-gray-700 whitespace-pre-line">{trainer.title}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+{/* faqs */}
+
+<div id="faq" className="py-20 bg-white">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <div key={index} className="border rounded-lg overflow-hidden">
+              <button
+                className="w-full flex items-center justify-between p-4 text-left bg-gray-50 hover:bg-gray-100"
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+              >
+                <span className="font-medium">{faq.question}</span>
+                {openIndex === index ? (
+                  <Minus className="h-5 w-5 text-yellow-500" />
+                ) : (
+                  <Plus className="h-5 w-5 text-yellow-500" />
+                )}
+              </button>
+              {openIndex === index && (
+                <div className="p-4 bg-white">
+                  <p className="text-gray-600">{faq.answer}</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{trainer.name}</h3>
-                <p className="text-gray-600">{trainer.title}</p>
-              </div>
-            ))}
-          </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
+    </div>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
