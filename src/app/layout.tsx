@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Go For Gold",
   description: "Powered by Newton School Of Technology",
   icons: {
-    icon: '/logo-real.jpeg',
+    icon: '/logo-real.ico',
   },
 };
 
@@ -29,7 +29,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-
+        {/* Favicon */}
+        <link rel="icon" href="/logo-real.jpeg"  />
 
         {/* Google Analytics */}
         <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-1QLBB1PD6J" />
