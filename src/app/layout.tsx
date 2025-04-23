@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Favicon */}
-        <link rel="icon" href="/logo-real.ico"  />
+        <link rel="icon" href="/logo-real.jpeg"  />
 
 
         {/* Google Analytics */}
