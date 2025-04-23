@@ -55,7 +55,7 @@ const faqs = [
         <div className="absolute inset-0 bg-black/60">
           <div className="container mx-auto px-6 h-full flex items-center">
             <div className="max-w-2xl text-white">
-              <h1 className="text-5xl font-bold mb-6">IOI Bootcamp Camp</h1>
+              <h1 className="text-5xl font-bold mb-6">The <span className='text-[#FFD700]'>GoForGold</span> IOI BootCamp</h1>
               <p className="text-2xl mb-8">Cultivating India's Future Olympiad Champions</p>
               <p className="text-lg mb-8 opacity-90">
               The GoForGold IOI Bootcamp is an intensive program to prepare India’s brightest students for the International Olympiad in Informatics (IOI). It offers early, advanced CP training that also supports ICPC readiness, aiming to grow India’s pool of IOI-ready talent and help young coders excel globally.
@@ -124,6 +124,7 @@ const faqs = [
               Includes all sessions, meals,<br/>
               accommodation & mentoring materials
             </p>
+            <p className="text-xs italic mt-2">*Scholarship's available</p>
             <p className="text-xs italic mt-2">*Please note, travel costs are not included.</p>
           </div>
 
