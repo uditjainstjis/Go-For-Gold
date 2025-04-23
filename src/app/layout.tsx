@@ -27,10 +27,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Favicon */}
-        <link rel="icon" href="/logo-real.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/logo-real.ico" />
+        <link rel="icon" href="/logo-real.ico"  />
 
-        <link rel="manifest" href="/site.webmanifest" />
 
         {/* Google Analytics */}
         <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-1QLBB1PD6J" />
