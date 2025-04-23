@@ -7,40 +7,36 @@ import Navbar from '../components/Navbar';
 function App() {
   const [openIndex, setOpenIndex] = useState(null);
 
-const faqs = [
-  {
-    question: "What is GoForGold?",
-    answer: "GoForGold is an initiative to improve India's Competitive Programming ecosystem by uniting and supporting the CP community. We aim to produce more high-rated coders and secure gold medals in international contests like ICPC and IOI."
-  },
-  {
-    question: "What is IOI?",
-    answer: "The GoForGold IOI Bootcamp is an intensive program to prepare India’s brightest students for the International Olympiad in Informatics (IOI). It offers early, advanced CP training that also supports ICPC readiness, aiming to grow India’s pool of IOI-ready talent and help young coders excel globally."
-  },
-  {
-    question: "Who are the trainers?",
-    answer: "Our programs are led by ICPC World Finalists, including founders Deepak Gour and Ashwin Krishnamoorthy. All trainers are highly-rated competitive programmers with significant contest experience."
-  },
-  {
-    question: "Is GoForGold connected to ICPC and IOI?",
-    answer: "GoForGold works alongside official ICPC and IOI programs as a complementary initiative. Newton School of Technology has partnered with ICPC regionals, and we're working toward formal associations with both organizations."
-  },
-  {
-    question: "Is there Accommodation Provided?",
-    answer: "Yes, accommodation is arranged for all participants attending the IOI Camp and is covered. Further details will be shared with accepted applicants."
-  },
-  {
-    question: "How to reach the campus?",
-    answer: "The campus is accessible by several transportation options. The nearest train station is Sonipat railway station, which is well-connected to other major cities. If you're travelling by metro, the closest station is Jahangirpuri Metro Station in Delhi. From either location, local transportation options are available to reach the campus. Detailed directions and assistance will be provided to accepted participants for a smooth arrival."
-  },
-  {
-    question: "How can I apply to the IOI Camp?",
-    answer: "To apply, simply fill out the application form at the apply button at the top of the page."
-  },
-  {
-    question: "How can I get in touch with you?",
-    answer: "If you have any questions or need assistance, you can reach out to us via email at goforgold@newtonschool.co or through our contact form on the website. We aim to respond to all inquiries as promptly as possible."
-  }
-];
+  const faqs = [
+    {
+      question: "What is the IOI Bootcamp?",
+      answer: "The GoForGold IOI Bootcamp is an intensive training program designed to prepare India's bright young minds for the International Olympiad in Informatics (IOI). Our goal is to expand India's competitive programming talent pool from 40 to over 100 IOI-ready students, enabling the younger members of the CP community to excel at a global stage."
+    },
+    {
+      question: "Who can attend the Bootcamp?",
+      answer: "Anyone who's practiced competitive programming and wants to improve and take their skills to the next level can apply."
+    },
+    {
+      question: "Who are the Trainers?",
+      answer: "Our programs are led by International Grand Masters, IOI Medalists & ICPC World Finalists, including founders Deepak Gour and Ashwin Krishnamoorthy. All trainers are highly-rated competitive programmers with significant contest experience."
+    },
+    {
+      question: "Is accommodation available?",
+      answer: "Yes, accommodation is arranged for all participants attending the IOI Bootcamp. The accommodation and food costs are covered in the registration fee. Further details will be shared with accepted applicants."
+    },
+    {
+      question: "How to reach the campus?",
+      answer: "The campus is accessible by several transportation options. The nearest train station is Sonipat railway station, which is well-connected to other major cities. If you're travelling by metro, the closest station is Jahangirpuri Metro Station in Delhi. From either location, local transportation options are available to reach the campus. Detailed directions and assistance will be provided to accepted participants for a smooth arrival."
+    },
+    {
+      question: "How can I apply for the IOI Bootcamp?",
+      answer: "Attend Codechef Start182 / Start184 and fill out the registration form. Based on your performance, you will get shortlisted and get an Invite."
+    },
+    {
+      question: "Where can I ask my queries?",
+      answer: "If you have any questions or need assistance, you can reach out to us via email at goforgold@newtonschool.co or through our contact form on the website. We aim to respond to all inquiries as promptly as possible."
+    }
+  ];
   return (
     <div className="min-h-screen bg-white">
       <Navbar/>

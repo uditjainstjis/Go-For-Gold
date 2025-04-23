@@ -4,31 +4,43 @@ import { Plus, Minus } from 'lucide-react';
 
 const faqs = [
   {
-    question: "What is the IOI Bootcamp?",
-    answer: "The GoForGold IOI Bootcamp is an intensive training program designed to prepare India's bright young minds for the International Olympiad in Informatics (IOI). Our goal is to expand India's competitive programming talent pool from 40 to over 100 IOI-ready students, enabling the younger members of the CP community to excel at a global stage."
+    question: "What is GoForGold?",
+    answer: "GoForGold is an initiative to improve India's Competitive Programming ecosystem by uniting and supporting the CP community. We aim to produce more high-rated coders and secure gold medals in international contests like ICPC and IOI."
   },
   {
-    question: "Who can attend the Bootcamp?",
-    answer: "Anyone who's practiced competitive programming and wants to improve and take their skills to the next level can apply."
+    question: "What programs does GoForGold offer?",
+    answer: "GoForGold offers training camps for ICPC teams, monthly Long Challenges, Campus Chapters, and the IOI Parallel Camp for school students."
   },
   {
-    question: "Who are the Trainers?",
-    answer: "Our programs are led by International Grand Masters, IOI Medalists & ICPC World Finalists, including founders Deepak Gour and Ashwin Krishnamoorthy. All trainers are highly-rated competitive programmers with significant contest experience."
+    question: "Who can participate in GoForGold programs?",
+    answer: "Our programs serve both college students (through camps) and school students in grades 7-12 (IOI Bootcamp). Anyone interested in competitive programming, regardless of skill level, can join our appropriate programs."
   },
   {
-    question: "Is accommodation available?",
-    answer: "Yes, accommodation is arranged for all participants attending the IOI Bootcamp. The accommodation and food costs are covered in the registration fee. Further details will be shared with accepted applicants."
+    question: "What has GoForGold accomplished?",
+    answer: "Nine teams out of 33 that qualified for the Asia West Continent Finals of ICPC were Go For Gold camp participants. We've successfully completed our first training camp and regularly conduct long challenges to improve CP enthusiasts’ learning."
+  },
+  {
+    question: "Who are the trainers?",
+    answer: "Our programs are led by ICPC World Finalists, including founders Deepak Gour and Ashwin Krishnamoorthy. All trainers are highly-rated competitive programmers with significant contest experience."
+  },
+  {
+    question: "Is GoForGold connected to ICPC and IOI?",
+    answer: "GoForGold works alongside official ICPC and IOI programs as a complementary initiative. Newton School of Technology has partnered with ICPC regionals, and we're working toward formal associations with both organizations."
+  },
+  {
+    question: "Is there Accommodation Provided?",
+    answer: "Yes, accommodation is arranged for all participants attending the Go for Gold Camp and is covered. Further details will be shared with accepted applicants."
   },
   {
     question: "How to reach the campus?",
     answer: "The campus is accessible by several transportation options. The nearest train station is Sonipat railway station, which is well-connected to other major cities. If you're travelling by metro, the closest station is Jahangirpuri Metro Station in Delhi. From either location, local transportation options are available to reach the campus. Detailed directions and assistance will be provided to accepted participants for a smooth arrival."
   },
   {
-    question: "How can I apply for the IOI Bootcamp?",
-    answer: "Attend Codechef Start182 / Start184 and fill out the registration form. Based on your performance, you will get shortlisted and get an Invite."
+    question: "How can I apply to the Go for Gold Camp?",
+    answer: "The Go for Gold Camp is an exclusive, invite-only program. To apply, simply fill out the application form at https://forms.gle/yLzb8rNCDyNSfwbj9 and take the first step toward joining us in the pursuit of ICPC gold! Shortlisted Candidates will get their invite by 20th Nov."
   },
   {
-    question: "Where can I ask my queries?",
+    question: "How can I get in touch with you?",
     answer: "If you have any questions or need assistance, you can reach out to us via email at goforgold@newtonschool.co or through our contact form on the website. We aim to respond to all inquiries as promptly as possible."
   }
 ];
