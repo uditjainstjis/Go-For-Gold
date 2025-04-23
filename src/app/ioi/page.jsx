@@ -113,7 +113,7 @@ const faqs = [
           <div className="bg-white p-8 rounded-xl shadow-lg border border-[#FFD700]/20">
             <MapPin className="w-10 h-10 text-[#FFD700] mb-4" />
             <h3 className="text-xl font-semibold mb-2">Location</h3>
-            <p>Newton School of Technology, Bengaluru/Delhi Campus</p>
+            <p>NST - Rishihood Campus Sonipat</p>
           </div>
 
           <div className="bg-white p-8 rounded-xl shadow-lg border border-[#FFD700]/20">
@@ -124,7 +124,7 @@ const faqs = [
               Includes all sessions, meals,<br/>
               accommodation & mentoring materials
             </p>
-            <p className="text-xs italic mt-2">*Scholarship's available</p>
+            <p className="text-sm italic mt-2">Scholarship's available</p>
             <p className="text-xs italic mt-2">*Please note, travel costs are not included.</p>
           </div>
 
