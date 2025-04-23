@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Favicon */}
-        <link rel="icon" href="/logo-real.jpeg"  />
+        <link rel="icon" type="image/x-icon" href="/logo-real.ico"  />
 
         {/* Google Analytics */}
         <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-1QLBB1PD6J" />
