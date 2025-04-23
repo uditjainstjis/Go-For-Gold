@@ -1,5 +1,3 @@
-import Head from 'next/head';
-
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -22,32 +20,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Favicon */}
-        <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="description"
-          content="Powered by Newton School Of Technology"
-        />
-        <meta
-          name="title"
-          content="Go For Gold"
-        />
-        <link rel="icon" type="image/x-icon" href="/logo-real.ico"  />
-        </Head>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Powered by Newton School Of Technology" />
+  <title>Go For Gold</title>
+  <link rel="icon" type="image/x-icon" href="/logo-real.ico" />
 
-        {/* Google Analytics */}
-        <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-1QLBB1PD6J" />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-1QLBB1PD6J');
-          `}
-        </Script>
-      </head>
+  {/* Google Analytics */}
+  <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-1QLBB1PD6J" />
+  <Script id="google-analytics" strategy="afterInteractive">
+    {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1QLBB1PD6J');
+    `}
+  </Script>
+</head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
