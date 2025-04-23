@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Go For Gold",
   description: "Powered by Newton School Of Technology",
+  icons: {
+    icon: '/logo-real.jpeg',
+  },
 };
 
 export default function RootLayout({
@@ -26,8 +29,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Favicon */}
-        <link rel="icon" href="/logo-real.jpeg"  />
 
 
         {/* Google Analytics */}
