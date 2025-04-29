@@ -91,7 +91,7 @@ function App() {
     <h2 className="text-3xl font-bold mb-4">Registration Deadline</h2>
     <p className="text-lg text-gray-800">
       Don’t miss out! Registrations close on{" "}
-      <span className="text-[#ffb300] font-semibold">27th April,2025</span>.
+      <span className="text-[#ffb300] font-semibold"><strike className='text-[#ffb300aa]'>27th April</strike>  7th May, 2025</span>.
     </p>
   </div>
 </div>
@@ -135,43 +135,91 @@ function App() {
       </div>
     </div>
       {/* Training Structure */}
-      <div className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-16">Training Structure</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: <BookOpen className="w-8 h-8" />,
-                title: "Foundational Algorithms",
-                desc: "Learn essential data structures and algorithms"
-              },
-              {
-                icon: <Trophy className="w-8 h-8" />,
-                title: "Daily Contests",
-                desc: "Practice with competitive programming challenges"
-              },
-              {
-                icon: <Users className="w-8 h-8" />,
-                title: "1:1 Mentoring",
-                desc: "Personal guidance from IOI medalists"
-              },
-              {
-                icon: <GraduationCap className="w-8 h-8" />,
-                title: "Team Building",
-                desc: "Fun activities and collaborative projects"
-              }
-            ].map((item, index) => (
-              <div key={index} className="text-center p-6 rounded-lg hover:bg-[#FFF8DC] transition duration-300">
-                <div className="w-16 h-16 mx-auto mb-4 bg-[#FFD700]/10 rounded-full flex items-center justify-center text-[#FFD700]">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
-              </div>
-            ))}
-          </div>
+      <div className="py-12 bg-slate-900 text-white">
+  <div className="container mx-auto px-6">
+    <h2 className="text-4xl font-bold text-gray-300 mb-12">Why Join?</h2>
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
+      {/* First row */}
+      <div className="p-10 bg-slate-800 flex flex-col items-center text-center">
+        <div className="w-24 h-24 mb-6">
+          <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-white">
+            <path d="M12 4.5a2 2 0 100 4 2 2 0 000-4z" fill="currentColor" />
+            <path d="M9.5 9.5c-1.5 1-2.5 2-2.5 3.5 0 .5.2 1 .5 1.5.3.5.7.8 1 1 .5.3 1 .5 1.5.5h4c.5 0 1-.2 1.5-.5.3-.2.7-.5 1-1 .3-.5.5-1 .5-1.5 0-1.5-1-2.5-2.5-3.5" fill="currentColor" />
+            <path d="M4 6a2 2 0 100 4 2 2 0 000-4z" fill="currentColor" />
+            <path d="M6 10c.5.5 1 1 1.5 1.5" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M20 6a2 2 0 100 4 2 2 0 000-4z" fill="currentColor" />
+            <path d="M18 10c-.5.5-1 1-1.5 1.5" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M12 3v-1" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M7 22h10" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M12 18v4" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M8 14c0 2 .5 4 4 4s4-2 4-4" stroke="currentColor" strokeWidth="1.5" />
+          </svg>
         </div>
+        <h3 className="text-xl font-bold mb-3">Get exposure to university-level CS knowledge while still in school</h3>
       </div>
+      
+      <div className="p-10 bg-blue-500 flex flex-col items-center text-center">
+        <div className="w-24 h-24 mb-6">
+          <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-white">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" strokeWidth="2" fill="currentColor" fillOpacity="0.2" />
+            <path d="M12 12v10" stroke="currentColor" strokeWidth="2" />
+            <path d="M17 14.5v5" stroke="currentColor" strokeWidth="2" />
+            <path d="M7 14.5v5" stroke="currentColor" strokeWidth="2" />
+            <text x="11" y="10" fontSize="4" fontWeight="bold" fill="currentColor">&lt;/&gt;</text>
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold mb-3">Develop algorithmic thinking skills that extend beyond programming</h3>
+      </div>
+      
+      <div className="p-10 bg-blue-600 flex flex-col items-center text-center">
+        <div className="w-24 h-24 mb-6">
+          <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-white">
+            <path d="M12 4L9 2H3v7l4 2M12 4l3-2h6v7l-4 2M12 4v6M3 9v7l9 5 9-5V9M12 15v5" stroke="currentColor" strokeWidth="1.5" fill="currentColor" fillOpacity="0.2" />
+            <path d="M9 10a3 2 0 100 4 3 2 0 000-4z" fill="currentColor" />
+            <path d="M15 10a3 2 0 100 4 3 2 0 000-4z" fill="currentColor" />
+            <path d="M8 7.5l8 1" stroke="currentColor" strokeWidth="1.5" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold mb-3">Get trained by top competitive programmers of the world</h3>
+      </div>
+      
+      {/* Second row */}
+      <div className="p-10 bg-blue-600 flex flex-col items-center text-center">
+        <div className="w-24 h-24 mb-6">
+          <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-white">
+            <circle cx="8" cy="16" r="4" fill="currentColor" />
+            <circle cx="16" cy="16" r="4" fill="currentColor" />
+            <path d="M8 12V8M16 12V8" stroke="currentColor" strokeWidth="2" />
+            <path d="M12 4v4M8 8h8" stroke="currentColor" strokeWidth="2" />
+            <path d="M7 12l-2 1M17 12l2 1" stroke="currentColor" strokeWidth="2" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold mb-3">Experience real-world contest settings</h3>
+      </div>
+      
+      <div className="p-10 bg-slate-800 flex flex-col items-center text-center">
+        <div className="w-24 h-24 mb-6">
+          <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-white">
+            <circle cx="12" cy="12" r="3" fill="currentColor" />
+            <circle cx="6" cy="6" r="2" fill="currentColor" />
+            <circle cx="18" cy="6" r="2" fill="currentColor" />
+            <circle cx="6" cy="18" r="2" fill="currentColor" />
+            <circle cx="18" cy="18" r="2" fill="currentColor" />
+            <path d="M12 9V6M6 8l4 2M18 8l-4 2M6 16l4-2M18 16l-4-2" stroke="currentColor" strokeWidth="1.5" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold mb-3">Become a part of India's top CP community</h3>
+      </div>
+      
+      <div className="p-10 bg-slate-900 flex flex-col items-center justify-center">
+        <svg viewBox="0 0 24 24" fill="none" className="w-32 h-32 text-blue-600">
+          <path d="M4 12h16M16 6l6 6-6 6" stroke="currentColor" strokeWidth="3" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
 
 
       {/* Expert Trainers */}
