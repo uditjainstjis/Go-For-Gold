@@ -24,6 +24,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center text-sm lg:text-base space-x-6 lg:space-x-8">
             <Link href="/" className="text-gray-700 hover:text-yellow-500">Home</Link>
             <Link href="/ioi" className="text-gray-700 hover:text-blue-500">IOI Bootcamp</Link>
+            <Link href="/winter-camp" className="block py-2 text-gray-700 hover:text-blue-500">Winter Camp</Link>
             <Link href="/goforgold" className="text-gray-700 hover:text-yellow-500">GFG Camp</Link>
           </div>
 
@@ -40,6 +41,7 @@ export default function Navbar() {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link href="/" className="block px-3 py-2 text-gray-700 hover:text-yellow-500">Home</Link>
             <Link href="/ioi" className="block px-3 py-2 text-gray-700 hover:text-blue-500">IOI Bootcamp</Link>
+            <Link href="/winter-camp" className="block px-3 py-2 text-gray-700 hover:text-blue-500">Winter Camp</Link>
             <Link href="/goforgold" className="block px-3 py-2 text-gray-700 hover:text-yellow-500">GFG Camp</Link>
           </div>
         </div>
