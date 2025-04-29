@@ -11,11 +11,11 @@ export default function Partners(){
 
             <div className='flex flex-col items-center '>
                 <h2 className='font-semibold text-xl md:text-2xl text-gray-700 mb-4'>Program Partner</h2>
-                <img src='/rubrik.png' className='w-52 sm:w-64 border border-black/4 p-[-30px]' alt='Rubrik'/>
+                <img src='/rubrik.png' className='w-64 rounded-xl p-2 sm:w-64 border border-black/4 p-[-30px]' alt='Rubrik'/>
             </div>
             <div className='flex flex-col items-center mt-0 lg-mt[-20px]'>
                 <h2 className='font-semibold text-xl md:text-2xl text-gray-700 mb-4'>Institute Partner</h2>
-                <img src='/rishihood.png' className='w-64 sm:w-80 border border-black/4' alt="Rishihood"/>
+                <img src='/rishihood.png' className='w-72 rounded-xl p-2 sm:w-80 border border-black/4' alt="Rishihood"/>
             </div>
         </div>
         </div>
